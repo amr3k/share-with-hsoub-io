@@ -1,4 +1,5 @@
 <?php
+
 /*
   Plugin Name: Share with hsoub I/O
   Plugin URI:  https://github.com/akkk33/share-with-hsoub-io
@@ -33,50 +34,6 @@
   SOFTWARE.
  */
 
-function social_share_menu_item()
-{
-    add_submenu_page("options-general.php", "مشاركة مع حسوب I/O", "مشاركة مع حسوب I/O", "manage_options", "share-with-hsoub-io", "social_share_page");
-}
-
-add_action("admin_menu", "social_share_menu_item");
-
-function social_share_page()
-{
-    ?>
-    <div class="wrap">
-        <h1>خيارات المشاركة</h1>
-
-        <form method="post" action="options.php">
-            <?php
-            settings_fields("social_share_config_section");
-
-            do_settings_sections("social-share");
-
-            submit_button();
-            ?>
-        </form>
-    </div>
-    <?php
-}
-
-function social_share_settings()
-{
-    add_settings_section("social_share_config_section", "", null, "social-share");
-
-    add_settings_field("social-share-hsoub-io", "هل تود إظهار زر المشاركة مع حسوب I/O؟", "social_share_hsoub_io_checkbox", "social-share", "social_share_config_section");
-
-    register_setting("social_share_config_section", "social-share-hsoub-io");
-}
-
-function social_share_hsoub_io_checkbox()
-{
-    ?>
-    <input type="checkbox" name="social-share-hsoub-io" value="1" <?php checked(1, get_option('social-share-hsoub-io'), true); ?> /> Check for Yes
-    <?php
-}
-
-add_action("admin_init", "social_share_settings");
-
 function add_social_share_icons($content)
 {
     global $post;
@@ -84,11 +41,22 @@ function add_social_share_icons($content)
     $url = get_permalink($post->ID);
     $url = esc_url($url);
 
-    if (get_option("social-share-hsoub-io") == 1) {
-        $html = $html . "<div class='hsoub-io'><a target='_blank' href='https://io.hsoub.com/add/link'>مشاركة مع حسوب I/O</a></div>";
-    }
-
-    $html = $html . "<div class='clear'></div></div>";
+    $html = $html . '<aside class="hsoubShareContainer">
+            <div class="hsoubShareBtns">
+                <div class="hsoubShareBtnContainer hsoubShareBtnContainer_facebook">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=' . $url . '" target="_blank" title="Facebook" class="hsoubShareBtn"><img src="https://static.hsoubcdn.com/share/img/facebook.png" alt="Facebook" class="hsoubShareIcon"></a>
+                </div>
+                <div class="hsoubShareBtnContainer hsoubShareBtnContainer_twitter">
+                    <a href="https://twitter.com/intent/tweet?text=url=' . $url . '" target="_blank"  title="Twitter" class="hsoubShareBtn"><img src="https://static.hsoubcdn.com/share/img/twitter.png" alt="Twitter" class="hsoubShareIcon"></a>
+                </div>
+                <div class="hsoubShareBtnContainer hsoubShareBtnContainer_whatsapp">
+                    <a href="whatsapp://send?text=/' . $url . '" target="_blank" title="WhatsApp" class="hsoubShareBtn"><img src="https://static.hsoubcdn.com/share/img/whatsapp.png" alt="WhatsApp" class="hsoubShareIcon"></a>
+                </div>
+                <div class="hsoubShareBtnContainer hsoubShareBtnContainer_hsoubio">
+                    <a href="https://io.hsoub.com/add/link?url=' . $url . '" target="_blank" title="Hsoub I/O" class="hsoubShareBtn"><img src="https://static.hsoubcdn.com/share/img/hsoubio.png" alt="Hsoub I/O" class="hsoubShareIcon"></a>
+                </div>
+            </div>
+        </aside>';
 
     return $content = $content . $html;
 }
@@ -97,7 +65,7 @@ add_filter("the_content", "add_social_share_icons");
 
 function social_share_style()
 {
-    wp_register_style("social-share-style-file", plugin_dir_url(__FILE__) . "style.css");
+    wp_register_style("social-share-style-file", plugin_dir_url(__FILE__) . "hsoub.css");
     wp_enqueue_style("social-share-style-file");
 }
 
