@@ -1,0 +1,27 @@
+.social-share-wrapper div
+{
+    float: left;
+    margin-right: 10px;
+}
+
+.social-share-wrapper div.hsoub-io
+{
+    background-color: #3a5795;
+    padding: 5px;
+}
+
+.social-share-wrapper div.hsoub-io a
+{
+    color: white;
+}
+
+.social-share-wrapper div a
+{
+    text-decoration: none;
+    border: none;
+}
+
+.clear
+{
+    clear: left;
+}
