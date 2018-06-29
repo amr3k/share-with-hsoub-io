@@ -1,0 +1,28 @@
+.hsoubShareContainer {
+    z-index: 999;
+    position: fixed;
+    right: 5px;
+    top: 35%;
+}
+.hsoubShareContainer .hsoubShareBtnContainer {
+    text-align: center;
+}
+.hsoubShareBtns .hsoubShareBtnContainer_hsoubio {
+    background-color: #dd4814;
+}
+.hsoubShareBtns .hsoubShareBtnContainer_twitter {
+    background-color: #55acee;
+}
+.hsoubShareBtns .hsoubShareBtnContainer_facebook {
+    background-color: #3b5998;
+}
+.hsoubShareBtns .hsoubShareBtnContainer_whatsapp {
+    background-color: #4dc247;
+}
+.hsoubShareBtns img.hsoubShareIcon {
+    padding: 10px;
+    -moz-box-sizing: content-box !important;
+    -webkit-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+    width: 20px;
+}
