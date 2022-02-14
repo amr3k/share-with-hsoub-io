@@ -34,14 +34,12 @@
   SOFTWARE.
  */
 
-function add_social_share_icons($content)
-{
+function add_social_share_icons($content) {
     global $post;
 
-    $url = get_permalink($post->ID);
-    $url = esc_url($url);
+    $url = esc_url(get_permalink($post->ID));
 
-    $html = $html . '<aside class="hsoubShareContainer">
+    $html = $content . '<aside class="hsoubShareContainer">
             <div class="hsoubShareBtns">
                 <div class="hsoubShareBtnContainer hsoubShareBtnContainer_facebook">
                     <a href="https://www.facebook.com/sharer/sharer.php?u=' . $url . '" target="_blank" title="Facebook" class="hsoubShareBtn"><img src="https://static.hsoubcdn.com/share/img/facebook.png" alt="Facebook" class="hsoubShareIcon"></a>
@@ -58,13 +56,12 @@ function add_social_share_icons($content)
             </div>
         </aside>';
 
-    return $content = $content . $html;
+    return $html;
 }
 
 add_filter("the_content", "add_social_share_icons");
 
-function social_share_style()
-{
+function social_share_style() {
     wp_register_style("social-share-style-file", plugin_dir_url(__FILE__) . "hsoub.css");
     wp_enqueue_style("social-share-style-file");
 }
