@@ -2,13 +2,13 @@
 
 /*
   Plugin Name: Share with hsoub I/O
-  Plugin URI:  https://github.com/akkk33/share-with-hsoub-io
+  Plugin URI:  https://github.com/416d72/share-with-hsoub-io
   Description: Instantly share links from your website with Hsoub I/O
-  Version:     1.0
-  Author:      akkk33
-  Author URI:  https://github.com/akkk33
+  Version:     0.0.2
+  Author:      416d72
+  Author URI:  https://github.com/416d72
   License:     MIT
-  License URI: https://github.com/akkk33/share-with-hsoub-io/blob/master/LICENSE
+  License URI: https://github.com/416d72/share-with-hsoub-io/blob/master/LICENSE
  */
 /*
   MIT License

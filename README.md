@@ -1,2 +1,3 @@
 # share-with-hsoub-io
-A wordpress plugin to enable fast link sharing with Hsoub I/O
+
+A tiny wordpress plugin to enable sharing links to Hsoub I/O
